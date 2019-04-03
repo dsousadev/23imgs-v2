@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const sharp = require('sharp');
 const server_port = 8080;
 // const server_ip_address = 'localhost';
 const server_ip_address = '0.0.0.0';
@@ -35,4 +34,4 @@ app.listen(
   console.log('Listening on ' + server_ip_address + ', port ' + server_port)
 );
 
-module.exports = {db, sharp};
+module.exports = db;

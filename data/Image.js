@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const db = require('../server.js').db;
+const db = require('../server.js');
 const Schema = mongoose.Schema;
+
 const ImageSchema = new Schema({
   url: String,
   caption: String,
