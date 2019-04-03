@@ -1,6 +1,6 @@
 const multer = require('multer');
 const upload = multer();
-const sharp = require('sharp');
+const sharp = require('./server').sharp;
 
 // resizes image and puts the promise on the request 
 const resizeImage = (req, res, next) => {

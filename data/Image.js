@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db = require('../server.js');
+const db = require('../server.js').db;
 const Schema = mongoose.Schema;
 const ImageSchema = new Schema({
   url: String,
@@ -15,7 +15,6 @@ ImageSchema.statics.pushNew = function pushNew(img) {
   img = new Image(img);
   return this.find().then(arr => {
     if (arr.length >= 23) {
-      let imageToDelete = arr[0].fileName;
       return this.deleteOne({ number: arr[0].number }).then(() => {
         return img.save();
       });
