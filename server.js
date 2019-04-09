@@ -2,7 +2,7 @@ const sharp = require('sharp');
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const compress = require('compression');
+const compression = require('compression');
 const app = express();
 const server_port = 8080;
 // const server_ip_address = 'localhost';
