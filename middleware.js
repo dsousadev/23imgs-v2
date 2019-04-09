@@ -2,7 +2,7 @@ const multer = require('multer');
 const upload = multer();
 const sharp = require('sharp');
 
-// resizes image and puts the promise on the request 
+// resizes image, puts the promise on the request object
 const resizeImage = (req, res, next) => {
   req.resized = sharp(req.file.buffer)
     .resize(615, 615, { fit: 'outside' })
@@ -10,7 +10,7 @@ const resizeImage = (req, res, next) => {
   next();
 };
 
-// takes a request object and returns an object in proper format
+// returns request object in proper format
 const processRequest = (req, res, next) => {
   req.resized
     .then(buffer => {

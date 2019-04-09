@@ -2,13 +2,14 @@ const sharp = require('sharp');
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const compress = require('compression');
 const app = express();
 const server_port = 8080;
 // const server_ip_address = 'localhost';
 const server_ip_address = '0.0.0.0';
 
 
-// Mongo setup then router setup
+// Mongo setup > then router setup
 const mongoose = require('mongoose');
 const login = process.env.DATABASE_URL;
 const db = mongoose.createConnection(login, { useNewUrlParser: true });
@@ -18,8 +19,10 @@ db.once('open', () => {
   app.use(require('./router.img.js'));
 });
 
-// middleware for cors
+//middleware 
+app.use(compression());
 app.use(cors());
+
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
